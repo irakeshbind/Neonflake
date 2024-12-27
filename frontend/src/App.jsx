@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ListingPage } from './Pages/ListingPage'
 import { VideoPage } from './Pages/VideoPage'
 import UploadPage from './Pages/UploadPage'
+import Toaster from './components/ui/toaster'
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route path="/upload" element={<UploadPage />} />
         <Route path="/video/:id" element={<VideoPage />} />
       </Routes>
+      <Toaster />
     </BrowserRouter>
   )
 }

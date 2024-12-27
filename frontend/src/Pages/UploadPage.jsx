@@ -12,6 +12,8 @@ import { Label } from "@radix-ui/react-label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { uploadVideo } from "@/Api";
 
 export default function UploadPage() {
   const [title, setTitle] = useState("");
@@ -21,8 +23,18 @@ export default function UploadPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would implement the logic to upload to Cloudinary
-    console.log("Submitting:", { title, description, thumbnail, video });
+    const response = await uploadVideo({
+      title,
+      description,
+      thumbnail,
+      video,
+    });
+    console.log(response);
+    if (response.status === 200) {
+      toast.success("Video uploaded successfully");
+    } else {
+      toast.error("Failed to upload video");
+    }
   };
 
   return (
@@ -76,7 +88,7 @@ export default function UploadPage() {
             </div>
           </div>
           <CardFooter className="flex justify-between mt-6">
-            <Button  variant="outline" type="button">
+            <Button variant="outline" type="button">
               Cancel
             </Button>
             <Button type="submit">Upload</Button>
