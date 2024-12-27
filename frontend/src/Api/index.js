@@ -17,7 +17,7 @@ export const uploadVideo = async (formData) => {
 };
 
 export const getVideos = async () => {
-  return await api.get("/videos");
+  return await api.get("/get-all-video-list");
 };
 
 export const getVideoById = async (id) => {
