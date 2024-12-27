@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000/api", // Adjust the base URL according to your backend
+  baseURL: "https://neonflake-backend.vercel.app/api", // Adjust the base URL according to your backend
   headers: {
     "Content-Type": "application/json",
   },
