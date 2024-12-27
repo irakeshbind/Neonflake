@@ -4,7 +4,8 @@ const Video = require("../model/videoModel");
 module.exports = {
   uploadVideo: async (req, res) => {
     try {
-      const { title, description, video, thumbnail } = req.body;
+      const {video, thumbnail} = req.files
+      const { title, description } = req.body;
       const uploadThumbnail = await cloudinary.uploader.upload(
         thumbnail.tempFilePath,
         {
@@ -32,7 +33,8 @@ module.exports = {
       return res
         .status(200)
         .json({ message: "Video uploaded successfully", videoData });
-    } catch (error) {
+    } catch (e) {
+      console.log(e)
       res.status(500).json({ message: "Error uploading video" });
     }
   },
