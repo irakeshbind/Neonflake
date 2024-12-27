@@ -54,4 +54,21 @@ module.exports = {
       res.status(500).json({ message: "Error fetch video" });
     }
   },
+  getVideoById: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const videoData = await Video.findById(id);
+      if (!videoData) {
+        return res
+          .status(400)
+          .json({ message: "Error fetch video in database" });
+      }
+      return res
+        .status(200)
+        .json({ message: "Video fetch successfully", videoData });
+    } catch (e) {
+      console.log(e);
+      res.status(500).json({ message: "Error fetch video" });
+    }
+  },
 };

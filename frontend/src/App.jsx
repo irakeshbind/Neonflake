@@ -4,10 +4,12 @@ import { ListingPage } from './Pages/ListingPage'
 import { VideoPage } from './Pages/VideoPage'
 import UploadPage from './Pages/UploadPage'
 import { Toaster } from 'sonner'
+import Navebar from './Pages/Navebar'
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Navebar />
       <Routes>
         <Route path="/" element={<ListingPage />} />
         <Route path="/upload" element={<UploadPage />} />
