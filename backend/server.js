@@ -3,7 +3,10 @@ const { connection } = require("./config");
 const videoRoute = require("./Routes/videoRoute");
 const fileUpload = require("express-fileupload");
 const app = express();
+const dotenv = require("dotenv");
 
+dotenv.config();
+app.use(express.json());
 app.use("/api", videoRoute);
 app.use(
   fileUpload({
